@@ -29,7 +29,7 @@ h1 {
 	background-repeat: repeat-x;
 	box-shadow:  -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
 	transform: rotate(-23deg);
-	animation: spin 20s linear reverse infinite;
+	animation: spin 60s linear reverse infinite;
 }
 
 @keyframes spin {
