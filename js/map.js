@@ -5,7 +5,7 @@ JavaScript used to calculate distance
 */
 var lat;
 var lon;
-var update = 1;
+var update;
 
 function reset() {
 	document.location.reload(true);
@@ -19,7 +19,7 @@ function map() {
 	var dlat = document.getElementById("dlat").value;
 	var dlon = document.getElementById("dlon").value;
 
-	/*conversion ratio for degrees -> radians*/
+	/*conversion ratio between degrees <-> radians*/
 	var con = Math.PI / 180.0;
 
 	/*Send distance to html*/
@@ -30,8 +30,8 @@ function map() {
 	var direction = calcDirection(clon - dlon, clat - dlat, distance[1], con);
 	document.getElementById("direction").innerHTML = direction + "\u00B0";
 
-	if (update == 1) {
-		update = 0;
+	if (update == 0) {
+		update = 1;
 		setTimeout(deviceLocation, 5000);
 	}
 }
@@ -76,10 +76,10 @@ function calcDirection(B, X, b, con) {
 
 function deviceLocation() {
   	navigator.geolocation.getCurrentPosition(getPosition);
-  	if (update == 0) {
+  	if (update == 1) {
   		setTimeout(map, 0);
   	}
-  	update = 1;
+  	update = 0;
 }
 
 function getPosition(position) {
