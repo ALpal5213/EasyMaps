@@ -1,0 +1,112 @@
+/*Code Written By: Adrian Lewis;
+CSS Styles page for home page
+*/
+
+/*Formatting for body*/
+body {
+	background: #303030;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+}
+
+.earth {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 260px;
+	height: 260px;
+	background-image: url("../earth.jpg");
+	border-radius: 50%;
+	background-size: cover;
+	box-shadow:  -20px -20px 50px 2px #000 inset, 0 0 20px 2px #000;
+	transform: rotate(-24deg);
+	animation: spin 60s linear infinite;
+}
+
+@keyframes spin {
+	100%{background-position: 100%;}
+}
+
+input {
+	color: #000000;
+	border: solid #ffffff;
+	width: 200px;
+	height: 50px;
+	border-radius: 5px;
+}
+
+button {
+	height: 40px;
+	width: 90px;
+	color: #000000;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: solid #ffffff;
+	border-radius: 5px;
+	text-align: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.curr {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.dest {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.center {
+	text-align: center;
+}
+
+.center-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.map {
+	margin-top: 20px;
+	text-align: center;
+	color: #000000;
+}
+
+.output {
+	margin-top: 10px;
+}
+
+#distance {
+	background: #ffffff;
+	color: #000000;
+	border: solid #ffffff;
+	width: 200px;
+	height: 50px;
+	border-radius: 5px;
+	text-align: center;
+	padding-top: 12px;
+	overflow: hidden;
+}
+
+#direction {
+	background: #ffffff;
+	color: #000000;
+	border: solid #ffffff;
+	width: 200px;
+	height: 50px;
+	border-radius: 5px;
+	text-align: center;
+	padding-top: 12px;
+	overflow: hidden;
+}

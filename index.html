@@ -1,0 +1,83 @@
+<!--
+Author: Adrian J. Lewis
+Date: 18 Sept 2022
+Main page for the map website
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>EasyMaps Website</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style_home.css">
+</head>
+<body>
+	<!--heading-->
+	<h1>Easy Maps</h1>
+	<div class="earth"></div>
+	<div class="container">
+		<!--Input fields-->
+		<div class="center">Choose device location or manually input below
+			<div class="center-div">
+				<button onclick="deviceLocation()" type="button" id="location-device" class="loc-type">Device Location</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="curr col-sm-12"></div>
+			<div class="center col-sm-6">Current Latitude
+				<div>
+					<input id="clat" type="number" placeholder="0"><br>
+				</div>
+			</div>
+			<div class="center col-sm-6">Current Longitude
+				<div>
+					<input id="clon" type="number" placeholder="0"><br>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="dest col-sm-12"></div>
+			<div class="center col-sm-6">Destination Latitude
+				<div>
+					<input id="dlat" type="number" placeholder="type here... default is 0&#176;"><br>
+				</div>
+			</div>
+			<div class="center col-sm-6">Destination Longitude
+				<div>
+					<input id="dlon" type="number" placeholder="type here... default is 0&#176;"><br>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="map col-sm-12">
+				<div>
+					<button onclick="reset()" type="button" id="reset-button">Reset</button>
+					<button onclick="map()" type="submit" 
+					id="map-button">Map</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="output row">
+			<div class="center col-sm-6">Distance
+				<div class="center-div">
+					<output id="distance"></output>
+				</div>
+			</div>
+			<div class="center col-sm-6">Direction
+				<div class="center-div">
+					<output id="direction"></output>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/map.js"></script>
+</body>
+</html>
