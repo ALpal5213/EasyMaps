@@ -16,8 +16,7 @@ h1 {
 
 .earth {
 	position: fixed;
-	top: 0;
-	bottom: 0;
+	top: 35%;
 	left: 0;
 	right: 0;
 	margin: auto;
@@ -39,6 +38,7 @@ h1 {
 input {
 	color: #000000;
 	border: solid #ffffff;
+	background: #ffffff;
 	width: 200px;
 	height: 40px;
 	border-radius: 5px;
@@ -51,6 +51,7 @@ button {
 	margin-left: 10px;
 	margin-right: 10px;
 	border: solid #ffffff;
+	background-color: #ffffff;
 	border-radius: 5px;
 	text-align: center;
 	display: inline-flex;
