@@ -20,14 +20,20 @@ function map() {
 	var dlon = document.getElementById("dlon").value;
 
 	/*conversion ratio between degrees <-> radians*/
-	var con = Math.PI / 180.0;
+	var convert = Math.PI / 180.0;
+
+	/*Angles for calculations converted to radians*/
+	var a = (90.0 - dlat) * convert;
+	var c = (90.0 - clat) * convert;
+	var B = (clon - dlon) * convert;
+	var X = (clat - dlat) * convert;
 
 	/*Send distance to html*/
-	var distance = calcDistance(clat, clon, dlat, dlon, con);
+	var distance = calcDistance(a, c, B);
 	document.getElementById("distance").innerHTML = distance[0] + " km";
 
 	/*Send directions to html*/
-	var direction = calcDirection(clon - dlon, clat - dlat, distance[1], con);
+	var direction = calcDirection(B, X, a, distance[1], convert);
 	document.getElementById("direction").innerHTML = direction + "\u00B0";
 
 	if (update == 0) {
@@ -37,13 +43,8 @@ function map() {
 }
 
 /*Determine distance to travel*/
-function calcDistance(clat, clon, dlat, dlon, con) {
+function calcDistance(a, c, B) {
 	var R = 6371; /*Average Earth radius in km*/
-
-	/*Angles for calculation converted to radians*/
-	var a = (90.0 - dlat) * con;
-	var c = (90.0 - clat) * con;
-	var B = (clon - dlon) * con;
 	var b;
 
 	b = Math.acos(Math.cos(a) * Math.cos(c) + 
@@ -55,22 +56,26 @@ function calcDistance(clat, clon, dlat, dlon, con) {
 }
 
 /*Determine the direction of travel*/
-function calcDirection(B, X, b, con) {
+function calcDirection(B, X, a, b, convert) {
 	var A0;
 	var A;
 
-	A0 = Math.asin(Math.sin(Math.abs(B) * con) / Math.sin(b)) / con;
+	A0 = Math.asin(Math.sin(Math.abs(B)) * Math.sin(a) / Math.sin(b)) / convert;
 
-	if (B < 0 && X < 0) {
+	
+	if (B <= 0 && X <= 0) {       /*if destination is east and north*/
 		A = A0;
-	} else if (B > 0 && X < 0) {
-		A = 360 - A0;
-	} else if (B < 0 && X > 0) {
-		A = 180 - A0;
+	} else if (B > 0 && X <= 0) { /*if destination is west and north*/
+		A = 360.0 - A0;
+	} else if (B < 0 && X > 0) {  /*if destination is east and south*/
+		A = 180.0 - A0;
+	} else if (B >= 0 && X > 0) { /*if destination is west and south*/
+		A = 180.0 + A0;
 	} else {
-		A = 180 + A0;
+		A = A0;
+		console.log("error")      /*Should not go here*/
 	}
-
+	
 	return A.toFixed(2);
 }
 
