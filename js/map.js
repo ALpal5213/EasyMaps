@@ -45,7 +45,7 @@ function map() {
 	if the user selected device location for input*/
 	if (update == 0) {
 		update = 1;
-		setTimeout(deviceLocation, 5000);
+		setTimeout(deviceLocation, 1000);
 	}
 }
 
@@ -81,7 +81,7 @@ function calcDirection(B, X, a, b, convert) {
 		A = 180.0 + A0;
 	} else {                      /*Should not go here*/
 		A = A0;
-		console.log("error")      /*Used to debug if direction is incorrect*/
+		console.log("error")      /*Use to debug if direction is incorrect*/
 	}
 	
 	return A.toFixed(2);
@@ -90,9 +90,10 @@ function calcDirection(B, X, a, b, convert) {
 /*Calls Geolocation API*/
 function deviceLocation() {
   	navigator.geolocation.getCurrentPosition(getPosition);
-
+  	
   	/*Only enter if map() calls to update*/
   	if (update == 1) {
+  		update = 0;
   		setTimeout(map, 0);
   	}
   	update = 0;
