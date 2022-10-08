@@ -66,7 +66,12 @@ function calcDistance(a, c, B) {
 function calcDirection(B, X, a, b, convert) {
 	var A0;
 	var A;
-
+	
+	/*Correct B if change in longitude is greater than pi or 180 deg*/
+	if (Math.abs(B) > Math.PI) {
+		B = 2 * Math.PI - Math.abs(B);
+	}
+	
 	/*Calculate A0 and turn into degrees*/
 	A0 = Math.asin(Math.sin(Math.abs(B)) * Math.sin(a) / Math.sin(b)) / convert;
 
@@ -81,7 +86,7 @@ function calcDirection(B, X, a, b, convert) {
 		A = 180.0 + A0;
 	} else {                      /*Should not go here*/
 		A = A0;
-		console.log("error")      /*Use to debug if direction is incorrect*/
+		console.log("error")      /*Read error to console*/
 	}
 	
 	return A.toFixed(2);
